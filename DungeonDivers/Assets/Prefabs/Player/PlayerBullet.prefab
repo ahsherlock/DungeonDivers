@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2956153531303784434}
   - component: {fileID: 2956153531303784432}
   - component: {fileID: 2956153531303784433}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,8 @@ MonoBehaviour:
   bulletSpeed: 7.5
   theRigidBody: {fileID: 2956153531303784432}
   bulletImpact: {fileID: 5882686017772164031, guid: 99f67ea598ab7449d9bc86dc907828d3, type: 3}
+  enemyBulletImpact: {fileID: 1271472105412532193, guid: 98365b4862d184961ba9ecbe315a5ff2, type: 3}
+  bulletDamage: 50
 --- !u!50 &2956153531303784432
 Rigidbody2D:
   serializedVersion: 4

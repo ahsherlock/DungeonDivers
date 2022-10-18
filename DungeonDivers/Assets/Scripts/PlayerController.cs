@@ -5,6 +5,7 @@ using Quaternion = UnityEngine.Quaternion;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
     public float moveSpeed;
     private Vector2 moveInput;
     public Rigidbody2D theRB;
@@ -20,6 +21,12 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenShot;
 
     private float shotCounter;
+
+    //Awake happens before start
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {

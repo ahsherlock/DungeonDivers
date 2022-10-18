@@ -8,6 +8,10 @@ public class PlayerBullet : MonoBehaviour
     public Rigidbody2D theRigidBody;
 
     public GameObject bulletImpact;
+
+    public GameObject enemyBulletImpact;
+
+    public int bulletDamage = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,21 @@ public class PlayerBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Instantiate(bulletImpact, transform.position, transform.rotation);
-        Destroy(gameObject);
+
+
+        if (other.tag == "Enemy")
+        {
+            Instantiate(enemyBulletImpact, transform.position, transform.rotation);
+            other.GetComponent<EnemyController>().DamageEnemy(50);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instantiate(bulletImpact, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+
+
     }
     private void OnBecameInvisible()
     {
@@ -30,3 +47,5 @@ public class PlayerBullet : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
+
