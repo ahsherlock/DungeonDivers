@@ -42,6 +42,9 @@
      <Compile Include="Assets/Scripts/PlayerHealthController.cs" />
      <Compile Include="Assets/Scripts/EnemyController.cs" />
      <Compile Include="Assets/Scripts/UIController.cs" />
+     <Compile Include="Assets/Scripts/DamagePlayer.cs" />
+     <Compile Include="Assets/Scripts/BreakShit.cs" />
+     <Compile Include="Assets/Scripts/BrokenPieces.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -173,9 +176,6 @@
     </Reference>
     <Reference Include="UnityEngine.TilemapModule">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-        <HintPath>/Users/asher/Desktop/DungeonDivers/DungeonDivers/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>

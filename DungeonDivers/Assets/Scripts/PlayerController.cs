@@ -18,10 +18,17 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletToFire;
     public Transform firePoint;
 
+    public SpriteRenderer bodySR;
+
     public float timeBetweenShot;
 
     private float shotCounter;
 
+    private float activeMoveSpeed;
+    public float dashSpeed = 8f, dashLength = .5f, dashCooldown = 1f, dashInvincibility = .5f;
+    [HideInInspector]
+    public float dashCounter;
+    private float dashCoolCounter;
     //Awake happens before start
     private void Awake()
     {
@@ -32,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         // Set Camera at start of game, because setting it every frame at 60FPS is too resource intensive 
         theCamera = Camera.main;
+        activeMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -43,7 +51,7 @@ public class PlayerController : MonoBehaviour
         moveInput.Normalize();
 
 
-        theRB.velocity = moveInput * moveSpeed;
+        theRB.velocity = moveInput * activeMoveSpeed;
 
         // get mouse position 
         Vector3 mousePosition = Input.mousePosition;
@@ -80,6 +88,28 @@ public class PlayerController : MonoBehaviour
                 Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
                 shotCounter = timeBetweenShot;
             }
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {   
+            if(dashCoolCounter <= 0 && dashCounter <= 0){
+                PlayerHealthController.instance.invincCount = PlayerHealthController.instance.invinceLength;
+                PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 0.5f);
+                activeMoveSpeed = dashSpeed;
+                dashCounter = dashLength;
+                theAnimator.SetTrigger("Dash");  
+            }
+                    
+            
+        }
+        if(dashCounter > 0){
+            dashCounter -= Time.deltaTime;
+            if (dashCounter <= 0){
+                activeMoveSpeed = moveSpeed;
+                dashCoolCounter = dashCooldown;
+            }
+        }
+        if(dashCoolCounter > 0){
+            dashCoolCounter -= Time.deltaTime;
         }
 
         if (moveInput != Vector2.zero)
