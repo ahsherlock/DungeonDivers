@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float dashCounter;
     private float dashCoolCounter;
+
+    public int dashSound, shotSound;
+
     //Awake happens before start
     private void Awake()
     {
@@ -77,6 +80,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+            AudioManager.instance.PlaySFX(shotSound);
             shotCounter = timeBetweenShot;
 
         }
@@ -86,29 +90,35 @@ public class PlayerController : MonoBehaviour
             if (shotCounter <= 0)
             {
                 Instantiate(bulletToFire, firePoint.position, firePoint.rotation);
+                AudioManager.instance.PlaySFX(shotSound);
                 shotCounter = timeBetweenShot;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {   
-            if(dashCoolCounter <= 0 && dashCounter <= 0){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (dashCoolCounter <= 0 && dashCounter <= 0)
+            {
                 PlayerHealthController.instance.invincCount = PlayerHealthController.instance.invinceLength;
                 PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 0.5f);
+                AudioManager.instance.PlaySFX(dashSound);
                 activeMoveSpeed = dashSpeed;
                 dashCounter = dashLength;
-                theAnimator.SetTrigger("Dash");  
+                theAnimator.SetTrigger("Dash");
             }
-                    
-            
+
+
         }
-        if(dashCounter > 0){
+        if (dashCounter > 0)
+        {
             dashCounter -= Time.deltaTime;
-            if (dashCounter <= 0){
+            if (dashCounter <= 0)
+            {
                 activeMoveSpeed = moveSpeed;
                 dashCoolCounter = dashCooldown;
             }
         }
-        if(dashCoolCounter > 0){
+        if (dashCoolCounter > 0)
+        {
             dashCoolCounter -= Time.deltaTime;
         }
 

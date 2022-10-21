@@ -147,6 +147,8 @@ MonoBehaviour:
   fireRate: 0.5
   theBody: {fileID: 3125601287951436077}
   shootingRange: 10
+  enemyShootingSound: 17
+  enemyDeathSound: 1
 --- !u!95 &3125601287570999974
 Animator:
   serializedVersion: 3

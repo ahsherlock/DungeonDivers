@@ -8,6 +8,8 @@ public class PlayerBullet : MonoBehaviour
     public Rigidbody2D theRigidBody;
 
     public GameObject bulletImpact;
+    public int enemyDamagedSound;
+    public int bulletImpactSound;
 
     public GameObject enemyBulletImpact;
 
@@ -31,11 +33,13 @@ public class PlayerBullet : MonoBehaviour
         {
             Instantiate(enemyBulletImpact, transform.position, transform.rotation);
             other.GetComponent<EnemyController>().DamageEnemy(50);
+            AudioManager.instance.PlaySFX(enemyDamagedSound);
             Destroy(gameObject);
         }
         else
         {
             Instantiate(bulletImpact, transform.position, transform.rotation);
+            AudioManager.instance.PlaySFX(bulletImpactSound);
             Destroy(gameObject);
         }
 

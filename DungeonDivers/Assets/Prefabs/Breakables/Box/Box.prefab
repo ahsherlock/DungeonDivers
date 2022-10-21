@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4164864853669180442}
   - component: {fileID: 4164864853669180441}
   - component: {fileID: 4164864853669180440}
-  m_Layer: 0
+  - component: {fileID: 6987525184840265114}
+  m_Layer: 10
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1490984297
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4098156409588004937, guid: b1e514ee9c00f0c458e99f588dfa4cb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,10 +124,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenPieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  maxPieces: 5
+  - {fileID: 8857115532914837177, guid: c5ad108f8774e4d98a83edb3852a743a, type: 3}
+  - {fileID: 2937879248819490070, guid: fc677b2fe0e864a88917fb71500f3bc9, type: 3}
+  - {fileID: 95981782184243653, guid: fd704ff359f894cea924892b018a4bf6, type: 3}
+  - {fileID: 477479093409029158, guid: e4d101835a4044be3854d3de3ccb16bb, type: 3}
+  - {fileID: 9135521015236576449, guid: d8e19b9a6244d4b82acc201d86bcdc0f, type: 3}
+  - {fileID: 8536768922875798926, guid: b0130ca393cf449959e111f8c3b3ff9a, type: 3}
+  breakSound: 0
+  maxPieces: 6
+  doesItDropShit: 1
+  possibleDrops:
+  - {fileID: 4677026291934522977, guid: 0c5b1fef018894aa6b199a4d7e2d5fc7, type: 3}
+  - {fileID: 2802128673423489923, guid: 484934c7fb6394a9693ac275f5b2d69c, type: 3}
+  itemDropPercentage: 100
+--- !u!114 &6987525184840265114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164864853669180439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ea4b217bd4b4fc2ad42ab83432b46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour
 
     public float shootingRange;
 
+    public int enemyShootingSound, enemyDeathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,11 @@ public class EnemyController : MonoBehaviour
             }
 
             moveDirection.Normalize();
-            theRigidBody2D.velocity = moveDirection * moveSpeed;
+            if (theRigidBody2D != null)
+            {
+                theRigidBody2D.velocity = moveDirection * moveSpeed;
+            }
+
 
             if (moveDirection != Vector3.zero)
             {
@@ -70,12 +76,17 @@ public class EnemyController : MonoBehaviour
                 {
                     fireCounter = fireRate;
                     Instantiate(bullet, firePoint.position, firePoint.rotation);
+                    AudioManager.instance.PlaySFX(enemyShootingSound);
                 }
             }
         }
         else
         {
-            theRigidBody2D.velocity = Vector2.zero;
+            if (theRigidBody2D != null)
+            {
+                theRigidBody2D.velocity = Vector2.zero;
+            }
+
         }
 
 
@@ -89,6 +100,7 @@ public class EnemyController : MonoBehaviour
             int selectedSplatter = Random.Range(0, deathSplats.Length);
             int rotation = Random.Range(0, 4);
             Instantiate(deathSplats[selectedSplatter], transform.position, Quaternion.Euler(0f, 0f, rotation * 90f));
+            AudioManager.instance.PlaySFX(enemyDeathSound);
             // Instantiate(deathSplat, transform.position, transform.rotation);
         }
     }
